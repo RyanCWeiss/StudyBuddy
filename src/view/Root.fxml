@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane fx:id="navBP" prefHeight="840.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RootController">
+   <top>
+      <HBox alignment="CENTER" prefHeight="88.0" prefWidth="1440.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="courseSelectionButton" mnemonicParsing="false" onAction="#onCourseSelectionButtonClicked" text="Course Selection" />
+            <Button fx:id="editCourseListButton" mnemonicParsing="false" onAction="#onEditCourseListButtonClicked" text="Edit Course List" />
+            <Button fx:id="createCourseButton" mnemonicParsing="false" onAction="#onCreateCourseButtonClicked" text="Create Course" />
+            <Button fx:id="editCourseButton" mnemonicParsing="false" onAction="#onEditCourseButtonClicked" text="Edit Course" />
+            <Button fx:id="returnToCourseButton" mnemonicParsing="false" onAction="#onReturnToCourseButtonClicked" text="Return To Course" />
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

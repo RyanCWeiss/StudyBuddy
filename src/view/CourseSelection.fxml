@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="courseSelectionBP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CourseSelectionController">
+   <center>
+      <TableView maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn maxWidth="250.0" minWidth="7.907806396484375" prefWidth="250.0" text="Course Name" />
+            <TableColumn maxWidth="250.0" prefWidth="250.0" text="Number of Entries" />
+        </columns>
+      </TableView>
+   </center>
+</BorderPane>
