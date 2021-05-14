@@ -37,6 +37,12 @@ public class DataBaseUtil {
 	 
 	 */
 	
+	private static String COURSE_FORMAT =  "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+	+ "TERM VARCHAR(100) NOT NULL UNIQUE, "
+	+ "TEXT_CONTENT VARCHAR(100) NOT NULL, "
+	+ "TEXT VARCHAR(50)"
+	+ ")";
+	
 	public static boolean tableExists(String dbName, String tableName) {
 		Connection connection = null;
 		try {
@@ -65,7 +71,7 @@ public class DataBaseUtil {
 	
 	public static String createTableIfAbsent(String dbName, String tableName, String tableFormat) {
 		if (tableExists(dbName, tableName)) {
-//			System.out.println("Table currently exists at specified location");
+			System.out.println("Table currently exists at specified location");
 			return null;
 		}
 		Connection connection = null;
@@ -105,12 +111,12 @@ public class DataBaseUtil {
 		return !tableExists(dbName, tableName);
 	}
 	
-	public static boolean resetTable(String dbName, String tableName, String tableFormat) {
+	public static boolean resetTable(String dbName, String tableName) {
 		if (tableExists(dbName, tableName)) {
 			dropTable(dbName, tableName);
-			createTableIfAbsent(dbName,tableName, tableFormat);
+			createTableIfAbsent(dbName,tableName, COURSE_FORMAT);
 		} else {
-			createTableIfAbsent(dbName,tableName, tableFormat);
+			createTableIfAbsent(dbName,tableName, COURSE_FORMAT);
 		}
 		
 		return tableExists(dbName, tableName);
@@ -243,9 +249,9 @@ public class DataBaseUtil {
 	
 	
 	
-	public static LinkedList<String> getAllTables(String dbName) {
+	public static LinkedList<CourseInfo> getAllTables(String dbName) {
 		
-		LinkedList<String> tableNames = new LinkedList<String>();
+		LinkedList<CourseInfo> tableNames = new LinkedList<CourseInfo>();
 		
 		Connection connection = null;
 		try {
@@ -257,7 +263,14 @@ public class DataBaseUtil {
 			// check if "employee" table is there
 			ResultSet tables = dbm.getTables(null, null, null, null);
 			while(tables.next()) {
-				tableNames.add(tables.getString("TABLE_NAME"));
+				
+				String name = tables.getString("TABLE_NAME");
+				ResultSet rs = statement.executeQuery("select count(*) from " + name);
+				rs.next();
+				int numOfQuestions = rs.getInt(1);
+				System.out.println(name + " " + numOfQuestions);
+				CourseInfo ci = new CourseInfo(name,numOfQuestions);
+				tableNames.add(ci);
 			}
 			return tableNames;
 		} catch(Exception e) {

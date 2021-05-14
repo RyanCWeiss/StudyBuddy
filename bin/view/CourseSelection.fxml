@@ -3,14 +3,28 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane fx:id="courseSelectionBP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CourseSelectionController">
    <center>
-      <TableView maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="courseSelectionTV" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onSelectionMade" prefHeight="677.0" prefWidth="500.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn maxWidth="250.0" minWidth="7.907806396484375" prefWidth="250.0" text="Course Name" />
-            <TableColumn maxWidth="250.0" prefWidth="250.0" text="Number of Entries" />
+          <TableColumn fx:id="courseNameTC" maxWidth="250.0" minWidth="7.907806396484375" prefWidth="250.0" text="Course Name" />
+            <TableColumn fx:id="numOfTermsTC" maxWidth="250.0" prefWidth="250.0" text="Number of Terms" />
         </columns>
       </TableView>
    </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select Course">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+   </top>
 </BorderPane>

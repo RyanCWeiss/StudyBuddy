@@ -36,27 +36,44 @@ public class RootController{
 
     @FXML
     void onCourseSelectionButtonClicked(ActionEvent event) {
-//    	stackPane.se
+    	
+    	stackPaneContent.get(0).setVisible(true);
+    	stackPaneContent.get(1).setVisible(false);
+    	stackPaneContent.get(2).setVisible(false);
+    	stackPaneContent.get(3).setVisible(false);
+//    	stackPaneContent.get(4).setVisible(false);
     }
 
     @FXML
     void onCreateCourseButtonClicked(ActionEvent event) {
-
+    	stackPaneContent.get(0).setVisible(false);
+    	stackPaneContent.get(1).setVisible(false);
+    	stackPaneContent.get(2).setVisible(false);
+    	stackPaneContent.get(3).setVisible(true);
     }
 
     @FXML
     void onEditCourseButtonClicked(ActionEvent event) {
-
+    	stackPaneContent.get(0).setVisible(false);
+    	stackPaneContent.get(1).setVisible(true);
+    	stackPaneContent.get(2).setVisible(false);
+    	stackPaneContent.get(3).setVisible(false);
     }
 
     @FXML
     void onEditCourseListButtonClicked(ActionEvent event) {
-
+    	stackPaneContent.get(0).setVisible(false);
+    	stackPaneContent.get(1).setVisible(false);
+    	stackPaneContent.get(2).setVisible(true);
+    	stackPaneContent.get(3).setVisible(false);
     }
 
     @FXML
     void onReturnToCourseButtonClicked(ActionEvent event) {
-
+    	stackPaneContent.get(0).setVisible(true);
+    	stackPaneContent.get(1).setVisible(false);
+    	stackPaneContent.get(2).setVisible(false);
+    	stackPaneContent.get(3).setVisible(false);
     }
 
     public static void setStackPaneContent(ObservableList<Node> spChildren) {
