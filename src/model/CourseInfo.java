@@ -1,4 +1,4 @@
-package sqliteUtil;
+package model;
 
 public class CourseInfo {
 

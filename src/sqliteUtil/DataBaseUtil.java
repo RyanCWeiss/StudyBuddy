@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 
+import model.CourseInfo;
+
 public class DataBaseUtil {
 	
 	
@@ -267,9 +269,9 @@ public class DataBaseUtil {
 				String name = tables.getString("TABLE_NAME");
 				ResultSet rs = statement.executeQuery("select count(*) from " + name);
 				rs.next();
-				int numOfQuestions = rs.getInt(1);
-				System.out.println(name + " " + numOfQuestions);
-				CourseInfo ci = new CourseInfo(name,numOfQuestions);
+				int numOfTerms = rs.getInt(1);
+				System.out.println(name + " " + numOfTerms);
+				CourseInfo ci = new CourseInfo(name,numOfTerms);
 				tableNames.add(ci);
 			}
 			return tableNames;

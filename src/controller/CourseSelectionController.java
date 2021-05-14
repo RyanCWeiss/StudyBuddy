@@ -13,8 +13,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import model.CourseInfo;
 import model.CourseSelection;
-import sqliteUtil.CourseInfo;
 
 public class CourseSelectionController implements Initializable{
 	private static CourseSelection courseSelection = CourseSelection.getCourseSelectionInstance("");
@@ -38,7 +38,7 @@ public class CourseSelectionController implements Initializable{
     	
     	CourseInfo courseSelection = courseSelectionTV.getSelectionModel().getSelectedItem();
     	String courseName = courseSelection.getCourseName();
-    	CourseSelection.getCourseSelectionInstance(courseName);
+    	CourseSelection.getCourseSelectionInstance("").setCourseName(courseName);
     	System.out.println("Selection: " + courseSelection.getCourseName());
     	
     	

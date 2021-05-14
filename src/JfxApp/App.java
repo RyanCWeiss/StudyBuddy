@@ -19,11 +19,13 @@ public class App extends Application {
 	public static String COURSE_FORMAT = "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
 			+ "TERM VARCHAR(100) NOT NULL UNIQUE, "
 			+ "TEXT_CONTENT VARCHAR(100) NOT NULL, "
-			+ "TEXT VARCHAR(50)"
+			+ "PDF_PATH VARCHAR(50)"
 			+ ")";
 	
-//	public static String COLUMN_NAMES = "(FirstName, UserName, CustomerOrder, Price)";
-//	public static String TABLE_FORMAT =  "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
+	public static String COLUMN_NAMES = "(TERM, TEXT_CONTENT, PDF_PATH)";
+	public static String NEW_INSERT = "\'Biology\', \'intro course\', \'\'";
+
+	//	public static String TABLE_FORMAT =  "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
 //			+ "FirstName VARCHAR(50), "
 //			+ "UserName VARCHAR(50) NOT NULL UNIQUE, "
 //			+ "CustomerOrder VARCHAR(50) NOT NULL, "
@@ -33,7 +35,6 @@ public class App extends Application {
 	public static void main(String[] args) {
 		launch(args);
 		
-//		String NEW_INSERT = "\'Ryan\', \'Ryan21\', \'Tacos and Nachos\', 10.0";
 //		String NEW_QUERY = "FirstName=\'Ryan\' AND UserName=\'Ryan21\'";
 //		String ORDER_COL = "customerOrder";
 //		String UPDATED_ORDER = "Tacos, Nachos, Margharita";
@@ -44,14 +45,16 @@ public class App extends Application {
 		
 		
 //		System.out.println(sqliteUtil.DataBaseUtil.createTableIfAbsent(MY_DATABASE, TABLE_NAME, TABLE_FORMAT));
-//		System.out.println("add to table: " + sqliteUtil.DataBaseUtil.addToTable(MY_DATABASE, TABLE_NAME, COLUMN_NAMES, NEW_INSERT));
+
+//		System.out.println("add to table: " + sqliteUtil.DataBaseUtil.addToTable(MY_DATABASE, "BIO101", COLUMN_NAMES, NEW_INSERT));
+
 //		System.out.println("table exists: " + sqliteUtil.DataBaseUtil.tableExists(MY_DATABASE, TABLE_NAME));
 //		System.out.println("search for Ryans Order: "); sqliteUtil.DataBaseUtil.search(MY_DATABASE, TABLE_NAME, NEW_QUERY);
 //		System.out.println("update  Ryans Order: "); sqliteUtil.DataBaseUtil.updateItem(MY_DATABASE, TABLE_NAME, NEW_QUERY, ORDER_COL, UPDATED_ORDER);
 //		System.out.println("update  Ryans Price: "); sqliteUtil.DataBaseUtil.updateItem(MY_DATABASE, TABLE_NAME, NEW_QUERY, PRICE_COL, UPDATED_PRICE);
 //		System.out.println("Ryans Updated Order: "); sqliteUtil.DataBaseUtil.search(MY_DATABASE, TABLE_NAME, NEW_QUERY);
 //		
-//		System.out.println("dropDB(): " + sqliteUtil.DataBaseUtil.dropTable(MY_DATABASE, TABLE_NAME));
+//		System.out.println("dropDB(): " + sqliteUtil.DataBaseUtil.dropTable(MY_DATABASE, "BIO101"));
 //
 //		System.out.println("table exists: " + sqliteUtil.DataBaseUtil.tableExists(MY_DATABASE, TABLE_NAME));
 //		System.out.print("TABLES: "); sqliteUtil.DataBaseUtil.getAllTables(MY_DATABASE).forEach(table -> {System.out.print(table + " ");});

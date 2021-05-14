@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="termSelectionBP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TermSelectionController">
+   <center>
+      <TableView fx:id="termSelectionTV" maxHeight="-Infinity" maxWidth="-Infinity" onMouseClicked="#onSelectionMade" prefHeight="677.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+         <columns>
+            <TableColumn fx:id="TermTC" maxWidth="250.0" minWidth="7.907806396484375" prefWidth="250.0" text="Term" />
+            <TableColumn fx:id="contentTC" maxWidth="500.0" prefWidth="500.0" text="Content" />
+         </columns>
+      </TableView>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select Term">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>

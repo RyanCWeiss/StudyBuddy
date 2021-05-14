@@ -1,0 +1,45 @@
+/**
+  * This is a List of Features to be implemented, as well as Items on the DOcket to reach a Minimum Viable Product
+  * 
+  **/ 
+  
+  
+  ****************************************************************************************************************
+  ****************************************************************************************************************
+  									Minimum Implementations
+  ****************************************************************************************************************
+  ****************************************************************************************************************
+  /* DOCKET ITEMS */
+  
+  - Finalize Minimum necessary Root Controls for Navigation
+  
+  - Upon Selection of a Course, bring user to the Course Editor/Term viewer Pane
+  
+  - Update the CourseSelector Pane upon switching to the Scene, see Observer Design Pattern (?) (or see if other interface will do
+  ie callable)
+  
+  - Add, Remove and Edit Terms in Course Editor
+  
+  - Create carousel for the viewing of a courses' terms
+  	- The card displayed should have 3 items accessible, the term, the Content and the PDF (can be 3 separate buttons)
+  
+  - create PdfUtil to add Pdfs to a course folder inside src/Databases/Pdfs/
+  	- add the pdf to the Term Item via a file Piscker
+  	- Ensure the pdf is not the original pdf (copy it and store it into the src/Databases/Pdfs/{CourseName}/ folder
+  	- If the Pdf is removed from the term, delete the pdf from the src/Databases/Pdfs/{CourseName}/ folder
+  
+  - 
+  
+  
+  ****************************************************************************************************************
+  ****************************************************************************************************************
+  									ADDITIONAL FEATURES
+  ****************************************************************************************************************
+  ****************************************************************************************************************
+  
+  
+  Add additional Fields to the terms, such as Chapter tags for filtering
+  
+  give ability to select subsets of terms either by filtering, or manual selection
+  
+  
