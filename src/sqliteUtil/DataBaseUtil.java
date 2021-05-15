@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 
 import model.CourseInfo;
+import model.TermInfo;
 
 public class DataBaseUtil {
 	
@@ -277,6 +278,36 @@ public class DataBaseUtil {
 			return tableNames;
 		} catch(Exception e) {
 			return tableNames;
+		} finally {
+			sqliteUtil.ConnectionUtil.closeConnection(connection);
+		}
+		
+	}
+	
+	public static LinkedList<TermInfo> getAllTerms(String dbName, String tableName) {
+		
+		LinkedList<TermInfo> terms = new LinkedList<TermInfo>();
+		
+		Connection connection = null;
+		try {
+			connection = sqliteUtil.ConnectionUtil.getConnection(dbName + ".sqlite");
+			Statement statement = connection.createStatement();	
+			statement.setQueryTimeout(30);	
+			
+			DatabaseMetaData dbm = connection.getMetaData();
+			ResultSet rs = statement.executeQuery(new QueryFormatter(tableName, "").sqlQueryAllTermsString());
+			while(rs.next()) {
+				String term = rs.getNString("Term");
+				String content = rs.getNString("Content");
+				String attachment = rs.getNString("pdfPath");
+				
+//				System.out.println(name + " " + numOfTerms);
+				TermInfo ti = new TermInfo(term, content, attachment);
+				terms.add(ti);
+			}
+			return terms;
+		} catch(Exception e) {
+			return terms;
 		} finally {
 			sqliteUtil.ConnectionUtil.closeConnection(connection);
 		}

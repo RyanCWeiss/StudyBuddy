@@ -6,8 +6,10 @@ import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -15,11 +17,17 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import model.CourseInfo;
 import model.CourseSelection;
+import model.SceneChangeUtil;
 
 public class CourseSelectionController implements Initializable{
 	private static CourseSelection courseSelection = CourseSelection.getCourseSelectionInstance("");
 	private static ObservableList<CourseInfo> courses = FXCollections.observableArrayList(sqliteUtil.DataBaseUtil.getAllTables(JfxApp.App.MY_DATABASE));
 	
+	@FXML 
+	private Button createCourseBTN;
+	
+	@FXML 
+	private Button courseSelectionBTN;
 	
     @FXML
     private BorderPane courseSelectionBP;
@@ -37,12 +45,29 @@ public class CourseSelectionController implements Initializable{
     void onSelectionMade(MouseEvent event) {
     	
     	CourseInfo courseSelection = courseSelectionTV.getSelectionModel().getSelectedItem();
-    	String courseName = courseSelection.getCourseName();
-    	CourseSelection.getCourseSelectionInstance("").setCourseName(courseName);
-    	System.out.println("Selection: " + courseSelection.getCourseName());
-    	
-    	
+    	if (courseSelection != null) {
+    		String courseName = courseSelection.getCourseName();
+        	CourseSelection.getCourseSelectionInstance("").setCourseName(courseName);
+        	System.out.println("Selection: " + courseSelection.getCourseName());
+        	 SceneChangeUtil scu = new SceneChangeUtil();
+     	    scu.switchScenes("CourseEditor.fxml", event);
+    	}
     }
+    
+    @FXML
+	void onCreateCourseBTNClicked(ActionEvent event) {
+	    SceneChangeUtil scu = new SceneChangeUtil();
+	    scu.switchScenes("CreateCourse.fxml", event);
+	}
+	    
+	@FXML
+	void onCourseSelectionBTNClicked(ActionEvent event) {
+	    SceneChangeUtil scu = new SceneChangeUtil();
+	    scu.switchScenes("CourseSelection.fxml", event);
+	}
+    
+    
+    
 
     public void updateTable() {
     	courses = FXCollections.observableArrayList(sqliteUtil.DataBaseUtil.getAllTables(JfxApp.App.MY_DATABASE));
@@ -56,7 +81,6 @@ public class CourseSelectionController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		updateTable();
-		System.out.println("Incomplete Class: Missing Ability to update on switching of scenes");
-		System.out.println("Incomplete Class: Missing Ability navigave to different Scene");
 	}
+	
 }

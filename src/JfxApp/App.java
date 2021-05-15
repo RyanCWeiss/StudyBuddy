@@ -64,29 +64,33 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		System.out.println("start");
-		BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("/view/root.fxml"));
-		StackPane sp = new StackPane();
+//		BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("/view/root.fxml"));
+//		StackPane sp = new StackPane();
 		BorderPane courseSelection = (BorderPane)FXMLLoader.load(getClass().getResource("/view/CourseSelection.fxml"));
-		BorderPane courseEditor = (BorderPane)FXMLLoader.load(getClass().getResource("/view/CourseEditor.fxml"));
-		BorderPane card = (BorderPane)FXMLLoader.load(getClass().getResource("/view/Card.fxml"));
-		BorderPane createCourse = (BorderPane)FXMLLoader.load(getClass().getResource("/view/CreateCourse.fxml"));
-		
-		sp.getChildren().addAll(courseSelection, courseEditor, card, createCourse);
-		root.setCenter(sp);
-		
+//		BorderPane courseEditor = (BorderPane)FXMLLoader.load(getClass().getResource("/view/CourseEditor.fxml"));
+//		BorderPane card = (BorderPane)FXMLLoader.load(getClass().getResource("/view/Card.fxml"));
+//		BorderPane createCourse = (BorderPane)FXMLLoader.load(getClass().getResource("/view/CreateCourse.fxml"));
+//		
+//		sp.getChildren().addAll(courseSelection, courseEditor, card, createCourse);
+//		root.setCenter(sp);
+//		
 //		courseSelection.
 //		.updateTable();
 		
-		Scene scene = new Scene(root);
+//		Scene scene = new Scene(root);
+		Scene scene = new Scene(courseSelection);
 		
-		stackPaneContent = sp.getChildren();
-		controller.RootController.setStackPaneContent(stackPaneContent);
-		stackPaneContent.get(0).setVisible(true);
-    	stackPaneContent.get(1).setVisible(false);
-    	stackPaneContent.get(2).setVisible(false);
-    	stackPaneContent.get(3).setVisible(false);
+//		stackPaneContent = sp.getChildren();
+//		controller.RootController.setStackPaneContent(stackPaneContent);
+//		stackPaneContent.get(0).setVisible(true);
+//    	stackPaneContent.get(1).setVisible(false);
+//    	stackPaneContent.get(2).setVisible(false);
+//    	stackPaneContent.get(3).setVisible(false);
 //    	stackPaneContent.get(4).setVisible(false);
 //    	stackPaneContent.get(5).setVisible(false);
+//		Application.setUserAgentStylesheet(getClass().getResource("/view/style.css")
+//				.toExternalForm());
+		scene.getStylesheets().add("/view/style.css");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		

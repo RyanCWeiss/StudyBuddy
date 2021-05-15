@@ -6,7 +6,7 @@
   
   ****************************************************************************************************************
   ****************************************************************************************************************
-  									Minimum Implementations
+  										Minimum Implementations
   ****************************************************************************************************************
   ****************************************************************************************************************
   /* DOCKET ITEMS */
@@ -23,23 +23,29 @@
   - Create carousel for the viewing of a courses' terms
   	- The card displayed should have 3 items accessible, the term, the Content and the PDF (can be 3 separate buttons)
   
-  - create PdfUtil to add Pdfs to a course folder inside src/Databases/Pdfs/
-  	- add the pdf to the Term Item via a file Piscker
-  	- Ensure the pdf is not the original pdf (copy it and store it into the src/Databases/Pdfs/{CourseName}/ folder
-  	- If the Pdf is removed from the term, delete the pdf from the src/Databases/Pdfs/{CourseName}/ folder
-  
   - 
   
   
   ****************************************************************************************************************
   ****************************************************************************************************************
-  									ADDITIONAL FEATURES
+  											ADDITIONAL FEATURES
   ****************************************************************************************************************
   ****************************************************************************************************************
   
   
-  Add additional Fields to the terms, such as Chapter tags for filtering
+  - Add additional Fields to the terms, such as Chapter tags for filtering
   
-  give ability to select subsets of terms either by filtering, or manual selection
+  - give ability to select subsets of terms either by filtering, or manual selection
+  
+  - Randomize the order of terms scene
+  
+  - create PdfUtil to add Pdfs to a course folder inside src/Databases/Pdfs/ (?APACHE POI)
+  	- add the pdf to the Term Item via a file Picker
+  	- Ensure the pdf is not the original pdf (copy it and store it into the src/Databases/Pdfs/{CourseName}/ folder
+  	- If the Pdf is removed from the term, delete the pdf from the src/Databases/Pdfs/{CourseName}/ folder
+  
+ 
+  
+  
   
   

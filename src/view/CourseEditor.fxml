@@ -14,19 +14,20 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="courseSelectionBP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CourseEditorController">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CourseEditorController">
    <center>
-      <SplitPane dividerPositions="0.5277272727272727" prefHeight="680.0" prefWidth="1120.0" BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.5003164556962025" prefHeight="680.0" prefWidth="1120.0" BorderPane.alignment="CENTER">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="658.0">
                <children>
-                  <TableView fx:id="questionSelectotTV" layoutX="-2.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="611.0" prefWidth="579.0">
+                  <TableView fx:id="termTV" layoutX="61.0" layoutY="99.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" onSort="#ontermTVSelected" prefHeight="600.0" prefWidth="700.0">
                      <columns>
                         <TableColumn fx:id="termTC" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Term" />
-                        <TableColumn fx:id="contentTC" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Content" />
+                        <TableColumn fx:id="contentTC" maxWidth="200.0" minWidth="300.0" prefWidth="200.0" text="Content" />
                         <TableColumn fx:id="attachmentTC" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Attachment" />
                      </columns>
                   </TableView>
@@ -34,10 +35,10 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="660.0" prefWidth="529.0">
                <children>
-                  <GridPane layoutX="78.0" layoutY="111.0" prefHeight="463.0" prefWidth="716.0">
+                  <GridPane layoutX="78.0" layoutY="111.0" prefHeight="496.0" prefWidth="716.0">
                     <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.8552551269531" minWidth="10.0" prefWidth="55.785430908203125" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="502.2145690917969" minWidth="10.0" prefWidth="230.20684814453125" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.8552551269531" minWidth="10.0" prefWidth="27.4066162109375" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="502.2145690917969" minWidth="10.0" prefWidth="262.0933837890625" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="534.0794067382812" minWidth="10.0" prefWidth="425.79315185546875" />
                     </columnConstraints>
                     <rowConstraints>
@@ -46,9 +47,11 @@
                         <RowConstraints maxHeight="248.76708984375" minHeight="10.0" prefHeight="53.259368896484375" vgrow="SOMETIMES" />
                       <RowConstraints maxHeight="318.55841064453125" minHeight="10.0" prefHeight="247.24063110351562" vgrow="SOMETIMES" />
                       <RowConstraints maxHeight="148.7744140625" minHeight="1.152069091796875" prefHeight="63.1429443359375" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="148.7744140625" minHeight="10.0" prefHeight="63.1429443359375" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="148.7744140625" minHeight="10.0" prefHeight="63.1429443359375" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="selectAttachmentBTN" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="133.0" text="Select Attachment" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                        <Button fx:id="selectAttachmentBTN" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSelectAttachmentBTNClicked" prefHeight="26.0" prefWidth="120.0" text="Select Attachment" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
                         <TextArea fx:id="textContentTF" prefHeight="257.0" prefWidth="355.0" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
                         <TextField fx:id="termTF" GridPane.columnSpan="2" GridPane.rowIndex="1" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term">
@@ -61,7 +64,18 @@
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <ImageView fx:id="attachmentIV" fitHeight="557.0" fitWidth="455.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowSpan="4" GridPane.valignment="CENTER" />
+                        <ImageView fx:id="attachmentIV" fitHeight="533.0" fitWidth="427.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowSpan="4" GridPane.valignment="CENTER" />
+                        <HBox alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="233.0" spacing="20.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                           <children>
+                              <Button fx:id="updateTermBTN" alignment="CENTER" mnemonicParsing="false" onAction="#onUpdateTermBTNClicked" prefWidth="120.0" text="Update Term" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="233.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <children>
+                              <Button fx:id="addTermBTN" alignment="CENTER" mnemonicParsing="false" onAction="#onAddTermBTNClicked" prefWidth="120.0" text="Add new Term" />
+                              <Button fx:id="deleteTermBTN" alignment="CENTER" mnemonicParsing="false" onAction="#onDeleteTermBTNClicked" prefWidth="120.0" text="Delete Term" />
+                           </children>
+                        </HBox>
                      </children>
                   </GridPane>
                </children>
@@ -76,19 +90,30 @@
       </SplitPane>
    </center>
    <top>
-      <HBox alignment="CENTER" prefHeight="49.0" prefWidth="1120.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="16.0" prefWidth="1120.0" BorderPane.alignment="CENTER">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Course: ">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
-            <Text fx:id="courseTXT" strokeType="OUTSIDE" strokeWidth="0.0">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Text>
+            <HBox prefHeight="41.0" prefWidth="1120.0" spacing="20.0">
+               <children>
+                  <Button fx:id="courseSelectionBTN" mnemonicParsing="false" onAction="#onCourseSelectionBTNClicked" text="Course Selection" />
+                  <Button fx:id="createCourseBTN" mnemonicParsing="false" onAction="#onCreateCourseBTNClicked" text="Add a Course" />
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="52.0" prefWidth="1120.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Course Editor">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </HBox>
          </children>
-      </HBox>
+      </VBox>
    </top>
 </BorderPane>

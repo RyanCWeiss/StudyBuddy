@@ -1,0 +1,25 @@
+
+/* Color1: #355c7d;
+ * Color2: #f67280;
+ * Color3: #6c5b7b;
+ * Black: #000000;
+ * White: #ffffff;
+ */
+
+
+.root{
+   
+	 -fx-background-color: #355c7d;
+  
+ 	
+}
+
+.button{
+    -fx-text-fill: #6c5b7b;
+    -fx-background-color: #f67280;
+    -fx-background-radius: 5;
+    -fx-border-radius: 10;
+    
+}
+
+

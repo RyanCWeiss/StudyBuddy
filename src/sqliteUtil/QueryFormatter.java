@@ -14,6 +14,10 @@ public class QueryFormatter {
 		return "SELECT * FROM "+ tableName + " WHERE " + query;
 	}
 	
+	public String sqlQueryAllTermsString() {
+		return "SELECT * FROM "+ tableName;
+	}
+	
 	public String sqlQueryValuesString(String columnName) {
 		return "SELECT " + columnName + " FROM "+ tableName + " WHERE " + query;
 		
