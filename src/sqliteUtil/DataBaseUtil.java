@@ -194,6 +194,41 @@ public class DataBaseUtil {
 		
 	}
 
+	public static boolean updateItemValues(String dbName, String tableName,String querySQL, String term, String content, String path) {
+		Connection connection = null;
+		// create update SQL template:
+		String sqlUpdate = "UPDATE " + tableName + " SET TERM = ? , TEXT_CONTENT = ? , PDF_PATH = ?"
+				+ "WHERE " + querySQL;
+				
+		try {
+			// establish connection
+			connection = sqliteUtil.ConnectionUtil.getConnection(dbName + ".sqlite");
+				
+			//create statement object from connection to interact with db
+			Statement statement = connection.createStatement();	
+			
+			// forces program to give up connection attempt after 30s (not necessary on local db but good practice to keep)
+			statement.setQueryTimeout(30);	
+			
+			// using the SQL Update template above, create a prepared Statement
+			PreparedStatement pStatement = connection.prepareStatement(sqlUpdate);
+			
+			// set the vars to the correct params
+			pStatement.setString(1, term);
+			pStatement.setString(2, content);
+			pStatement.setString(3, path);
+			pStatement.executeUpdate();
+			
+			return true;
+			} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			sqliteUtil.ConnectionUtil.closeConnection(connection);
+		}
+	
+		return false;
+	}
+	
 	public static boolean updateItem(String dbName, String tableName,String querySQL,  String columnToUpdate, String updatedValue) {
 		Connection connection = null;
 		// create update SQL template:
@@ -243,7 +278,7 @@ public class DataBaseUtil {
 					+ "WHERE " + query);
 			
 			} catch (SQLException e) {
-//			e.printStackTrace();
+			e.printStackTrace();
 		} finally {
 			sqliteUtil.ConnectionUtil.closeConnection(connection);
 		}
@@ -297,16 +332,17 @@ public class DataBaseUtil {
 			DatabaseMetaData dbm = connection.getMetaData();
 			ResultSet rs = statement.executeQuery(new QueryFormatter(tableName, "").sqlQueryAllTermsString());
 			while(rs.next()) {
-				String term = rs.getNString("Term");
-				String content = rs.getNString("Content");
-				String attachment = rs.getNString("pdfPath");
+				String term = rs.getString("TERM");
+				String content = rs.getString("TEXT_CONTENT");
+				String attachment = rs.getString("PDF_PATH");
 				
-//				System.out.println(name + " " + numOfTerms);
+//				System.out.println(term);
 				TermInfo ti = new TermInfo(term, content, attachment);
 				terms.add(ti);
 			}
 			return terms;
 		} catch(Exception e) {
+			e.printStackTrace();
 			return terms;
 		} finally {
 			sqliteUtil.ConnectionUtil.closeConnection(connection);

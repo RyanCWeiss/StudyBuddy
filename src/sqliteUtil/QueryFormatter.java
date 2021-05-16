@@ -15,7 +15,9 @@ public class QueryFormatter {
 	}
 	
 	public String sqlQueryAllTermsString() {
-		return "SELECT * FROM "+ tableName;
+		String query = "SELECT * FROM "+ tableName;
+//		System.out.println(query);
+		return query;
 	}
 	
 	public String sqlQueryValuesString(String columnName) {

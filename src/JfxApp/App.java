@@ -1,18 +1,12 @@
 package JfxApp;
 
 import javafx.application.Application;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class App extends Application {
-	
-	private static ObservableList<Node> stackPaneContent;
-	
 	
 	public static String MY_DATABASE = "src/DataBases/CoursesDB";
 	public static String  TABLE_NAME = "Courses";
@@ -25,24 +19,11 @@ public class App extends Application {
 	public static String COLUMN_NAMES = "(TERM, TEXT_CONTENT, PDF_PATH)";
 	public static String NEW_INSERT = "\'Biology\', \'intro course\', \'\'";
 
-	//	public static String TABLE_FORMAT =  "(ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-//			+ "FirstName VARCHAR(50), "
-//			+ "UserName VARCHAR(50) NOT NULL UNIQUE, "
-//			+ "CustomerOrder VARCHAR(50) NOT NULL, "
-//			+ "Price REAL NOT NULL"
-//			+ ")";
-	
+
 	public static void main(String[] args) {
 		launch(args);
 		
-//		String NEW_QUERY = "FirstName=\'Ryan\' AND UserName=\'Ryan21\'";
-//		String ORDER_COL = "customerOrder";
-//		String UPDATED_ORDER = "Tacos, Nachos, Margharita";
-//		String PRICE_COL = "Price";
-//		String UPDATED_PRICE = "20.0";
-		
-		
-		
+	
 		
 //		System.out.println(sqliteUtil.DataBaseUtil.createTableIfAbsent(MY_DATABASE, TABLE_NAME, TABLE_FORMAT));
 
@@ -62,34 +43,9 @@ public class App extends Application {
 	}
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
-		System.out.println("start");
-//		BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("/view/root.fxml"));
-//		StackPane sp = new StackPane();
+	public void start(Stage primaryStage) throws Exception {		
 		BorderPane courseSelection = (BorderPane)FXMLLoader.load(getClass().getResource("/view/CourseSelection.fxml"));
-//		BorderPane courseEditor = (BorderPane)FXMLLoader.load(getClass().getResource("/view/CourseEditor.fxml"));
-//		BorderPane card = (BorderPane)FXMLLoader.load(getClass().getResource("/view/Card.fxml"));
-//		BorderPane createCourse = (BorderPane)FXMLLoader.load(getClass().getResource("/view/CreateCourse.fxml"));
-//		
-//		sp.getChildren().addAll(courseSelection, courseEditor, card, createCourse);
-//		root.setCenter(sp);
-//		
-//		courseSelection.
-//		.updateTable();
-		
-//		Scene scene = new Scene(root);
 		Scene scene = new Scene(courseSelection);
-		
-//		stackPaneContent = sp.getChildren();
-//		controller.RootController.setStackPaneContent(stackPaneContent);
-//		stackPaneContent.get(0).setVisible(true);
-//    	stackPaneContent.get(1).setVisible(false);
-//    	stackPaneContent.get(2).setVisible(false);
-//    	stackPaneContent.get(3).setVisible(false);
-//    	stackPaneContent.get(4).setVisible(false);
-//    	stackPaneContent.get(5).setVisible(false);
-//		Application.setUserAgentStylesheet(getClass().getResource("/view/style.css")
-//				.toExternalForm());
 		scene.getStylesheets().add("/view/style.css");
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -104,8 +60,6 @@ public class App extends Application {
 	public void init() {
 		
 	}
-	public static ObservableList<Node> getStackPaneContent(){
-		return stackPaneContent;
-	}
+
 
 }

@@ -24,7 +24,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="658.0">
                <children>
-                  <TableView fx:id="termTV" layoutX="61.0" layoutY="99.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" onSort="#ontermTVSelected" prefHeight="600.0" prefWidth="700.0">
+                  <TableView fx:id="termTV" layoutX="61.0" layoutY="99.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" onMouseClicked="#onTermTVSelected" prefHeight="600.0" prefWidth="700.0">
                      <columns>
                         <TableColumn fx:id="termTC" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Term" />
                         <TableColumn fx:id="contentTC" maxWidth="200.0" minWidth="300.0" prefWidth="200.0" text="Content" />
@@ -103,7 +103,12 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="52.0" prefWidth="1120.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Course Editor">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Course Editor ">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="courseTXT" layoutX="742.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font size="24.0" />
                      </font>
