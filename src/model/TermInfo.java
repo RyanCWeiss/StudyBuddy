@@ -35,6 +35,10 @@ public class TermInfo {
 	public void setPdfPath(String pdfPath) {
 		this.pdfPath = pdfPath;
 	}
+	
+	public String toString() {
+		return term + " " + content.substring(0,content.length()/2+1) + "... " + pdfPath;
+	}
 
 	
 }

@@ -67,7 +67,15 @@ public class CourseEditorController implements Initializable {
 	private Button deleteTermBTN;
 	@FXML 
 	private Button addTermBTN;
+	@FXML 
+	private Button studyBTN;
 	
+	
+	@FXML
+	void onStudyBTNClicked(ActionEvent event) {
+	    SceneChangeUtil scu = new SceneChangeUtil();
+	    scu.switchScenes("Carousel.fxml", event);
+	}
 	@FXML
 	void onUpdateTermBTNClicked(ActionEvent event) {
 	   System.out.println("Update Term: inc");

@@ -18,19 +18,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CourseEditorController">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CourseEditorController">
    <center>
-      <SplitPane dividerPositions="0.5003164556962025" prefHeight="680.0" prefWidth="1120.0" BorderPane.alignment="CENTER">
+      <SplitPane dividerPositions="0.4677272727272727" prefHeight="680.0" prefWidth="1120.0" BorderPane.alignment="CENTER">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="658.0">
                <children>
-                  <TableView fx:id="termTV" layoutX="61.0" layoutY="99.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" onMouseClicked="#onTermTVSelected" prefHeight="600.0" prefWidth="700.0">
+                  <TableView fx:id="termTV" layoutX="8.0" layoutY="8.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" onMouseClicked="#onTermTVSelected" prefHeight="580.0" prefWidth="600.0">
                      <columns>
-                        <TableColumn fx:id="termTC" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Term" />
-                        <TableColumn fx:id="contentTC" maxWidth="200.0" minWidth="300.0" prefWidth="200.0" text="Content" />
-                        <TableColumn fx:id="attachmentTC" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Attachment" />
+                        <TableColumn fx:id="termTC" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Term" />
+                        <TableColumn fx:id="contentTC" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Content" />
+                        <TableColumn fx:id="attachmentTC" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Attachment" />
                      </columns>
                   </TableView>
+                  <Button fx:id="studyBTN" layoutX="555.0" layoutY="612.0" mnemonicParsing="false" onAction="#onStudyBTNClicked" text="Study" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="660.0" prefWidth="529.0">
