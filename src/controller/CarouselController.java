@@ -12,6 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import model.CourseSelection;
@@ -22,6 +25,7 @@ public class CarouselController implements Initializable {
 	
 	LinkedList<TermInfo> terms = sqliteUtil.DataBaseUtil.getAllTerms(JfxApp.App.MY_DATABASE, CourseSelection.getCourseSelectionInstance("").getCourseName());
 	int index = 0;
+	Text t = new Text("");
     @FXML
     private BorderPane cardBP;
 
@@ -103,17 +107,22 @@ public class CarouselController implements Initializable {
    			attachmentIV.setImage(new Image(path));
    		}
    		termTXT.setText(term);
-   		contentTF.getChildren().set(0, new Text(content));
+   		t.setText(content);
+   		contentTF.getChildren().set(0, t);
    		
-   		System.out.println(index + " loaded duration: " + (System.currentTimeMillis()-start));
    		
+   		contentTF.setVisible(false);
+   		attachmentIV.setVisible(true);
+   		contentTF.setVisible(true);
+   		attachmentIV.setVisible(false);
    	}
+   	
    	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-//   		terms = sqliteUtil.DataBaseUtil.getAllTerms(JfxApp.App.MY_DATABASE, CourseSelection.getCourseSelectionInstance("").getCourseName());
-//   		System.out.println(terms.toString());
-   		contentTF.getChildren().add(new Text(""));
-		updateCard(0);
+   		t.setFont(Font.font("verdana",FontWeight.NORMAL, FontPosture.REGULAR,24));
+   		contentTF.getChildren().add(t);
+		
+   		updateCard(0);
 		
 		
 	}

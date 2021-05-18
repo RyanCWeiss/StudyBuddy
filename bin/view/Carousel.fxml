@@ -31,7 +31,7 @@
                <children>
                   <Text fx:id="termTXT" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="36.0" />
                      </font>
                   </Text>
                </children>
@@ -50,8 +50,8 @@
             </StackPane>
             <HBox alignment="CENTER" prefHeight="81.0" prefWidth="920.0" spacing="20.0">
                <children>
-                  <Button fx:id="contentBTN" mnemonicParsing="false" onAction="#onContentBTNClicked" text="Content" />
-                  <Button fx:id="attachmentBTN" mnemonicParsing="false" onAction="#onAttachmentBTNClicked" text="Attachment" />
+                  <Button fx:id="contentBTN" mnemonicParsing="false" onAction="#onContentBTNClicked" prefHeight="40.0" prefWidth="85.0" text="CONTENT" />
+                  <Button fx:id="attachmentBTN" mnemonicParsing="false" onAction="#onAttachmentBTNClicked" prefHeight="40.0" prefWidth="85.0" text="Attachment" />
                </children>
                <padding>
                   <Insets bottom="10.0" top="10.0" />
@@ -63,14 +63,14 @@
    <left>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="previoiusBTN" mnemonicParsing="false" onAction="#onPreviousBTNClicked" text="Previous" />
+            <Button fx:id="previoiusBTN" mnemonicParsing="false" onAction="#onPreviousBTNClicked" prefHeight="40.0" prefWidth="80.0" text="PREVIOUS" />
          </children>
       </VBox>
    </left>
    <right>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="nextBTN" mnemonicParsing="false" onAction="#onNextBTNClicked" text="Next" />
+            <Button fx:id="nextBTN" mnemonicParsing="false" onAction="#onNextBTNClicked" prefHeight="40.0" prefWidth="80.0" text="NEXT" />
          </children>
       </VBox>
    </right>
