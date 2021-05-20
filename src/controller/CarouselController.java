@@ -103,8 +103,8 @@ public class CarouselController implements Initializable {
    		String term = termInfo.getTerm();
    		String content = termInfo.getContent();
    		String path = termInfo.getPdfPath();
-   		if (!path.isBlank()) {
-   			attachmentIV.setImage(new Image(path));
+   		if (!(path == null) && !(path.isBlank())) {
+   			attachmentIV.setImage(new Image("/DataBases/Attachments/"+ path));
    		}
    		termTXT.setText(term);
    		t.setText(content);
@@ -120,6 +120,7 @@ public class CarouselController implements Initializable {
    	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
    		t.setFont(Font.font("verdana",FontWeight.NORMAL, FontPosture.REGULAR,24));
+   		attachmentIV.setImage(null);
    		contentTF.getChildren().add(t);
 		
    		updateCard(0);

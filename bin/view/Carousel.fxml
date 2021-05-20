@@ -50,8 +50,8 @@
             </StackPane>
             <HBox alignment="CENTER" prefHeight="81.0" prefWidth="920.0" spacing="20.0">
                <children>
-                  <Button fx:id="contentBTN" mnemonicParsing="false" onAction="#onContentBTNClicked" prefHeight="40.0" prefWidth="85.0" text="CONTENT" />
-                  <Button fx:id="attachmentBTN" mnemonicParsing="false" onAction="#onAttachmentBTNClicked" prefHeight="40.0" prefWidth="85.0" text="Attachment" />
+                  <Button fx:id="contentBTN" mnemonicParsing="false" onAction="#onContentBTNClicked" prefHeight="40.0" prefWidth="120.0" text="CONTENT" />
+                  <Button fx:id="attachmentBTN" mnemonicParsing="false" onAction="#onAttachmentBTNClicked" prefHeight="40.0" prefWidth="120.0" text="ATTACHMENT" />
                </children>
                <padding>
                   <Insets bottom="10.0" top="10.0" />

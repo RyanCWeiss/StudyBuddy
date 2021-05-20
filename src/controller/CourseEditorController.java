@@ -1,6 +1,12 @@
 package controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
@@ -123,18 +129,37 @@ public class CourseEditorController implements Initializable {
 	}
 	
 	@FXML
-	void onSelectAttachmentBTNClicked(ActionEvent event) {
+	void onSelectAttachmentBTNClicked(ActionEvent event) throws IOException {
 	    FileChooser chooser = new FileChooser();
 	    chooser.setTitle("Open File");
-	    chooser.getExtensionFilters().addAll(new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
+	    chooser.getExtensionFilters().addAll(new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif", "*.jpeg"));
 	    Stage stage = (Stage)bp.getScene().getWindow();
 	    File file = chooser.showOpenDialog(stage);
 	    if (file != null) {
-	        String cwd = System. getProperty("user.dir");
-	        String s = new File(cwd).toURI().relativize(file.toURI()).getPath();
-	        
+//	        String cwd = System. getProperty("user.dir");
+//	        String path1 = new File(cwd).toURI().relativize(file.toURI()).getPath();
+	        String path1 = file.toString();
 	        System.out.println("FILE CHOOSER INCOMPLETE: NEED TO CLONE THE FILE AND PUT INTO PROPER LOCAL FOLDER");
-	        pathChosen = s;
+	        
+	        InputStream is = null;
+	        OutputStream os = null;
+	        String [] parts = path1.split("/");
+	        String name = parts[parts.length-1];
+	        String path2 = "src/DataBases/Attachments/"+ name;
+	        try {
+	        	
+	            is = new FileInputStream(new File(path1));
+	            os = new FileOutputStream(new File(path2));
+	            byte[] buffer = new byte[1024];
+	            int length;
+	            while ((length = is.read(buffer)) > 0) {
+	                os.write(buffer, 0, length);
+	            }
+	        } finally {
+	            is.close();
+	            os.close();
+	        }
+	        pathChosen = name;
 	    }
 	}
 	
@@ -167,10 +192,17 @@ public class CourseEditorController implements Initializable {
     	termTC.setCellValueFactory(new PropertyValueFactory<TermInfo,String>("term"));
     	contentTC.setCellValueFactory(new PropertyValueFactory<TermInfo,String>("content"));
     	attachmentTC.setCellValueFactory(new PropertyValueFactory<TermInfo,String>("pdfPath"));
-    		
+    	
     	termTV.setItems(terms);
+    	pathChosen = null;
 	}
 		
+	@FXML
+	public void onRemoveAttachmentBTNClicked(ActionEvent event) {
+		pathChosen = null;
+		attachmentIV.setImage(null);
+	}
+	
 	@FXML
 	public void onTermTVSelected(MouseEvent event) {
 		System.out.println("term selected");
@@ -188,7 +220,8 @@ public class CourseEditorController implements Initializable {
 		termTF.setText(term);
 		
 		
-		pathChosen = null;
+		pathChosen = path;
+		attachmentIV.setImage(new Image("/DataBases/Attachments/"+ path));
     	}
 	}
 	
