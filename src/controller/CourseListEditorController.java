@@ -85,8 +85,22 @@ public class CourseListEditorController implements Initializable{
     @FXML
     void onUpdateCourseButtonClicked(ActionEvent event) {
     	String newName = updateCourseNameTF.getText();
-    	sqliteUtil.DataBaseUtil.updateTableName(JfxApp.App.MY_DATABASE, CourseSelection.getCourseSelectionInstance("").getCourseName(), newName);
-    	updateTable();
+    	try{
+    		sqliteUtil.DataBaseUtil.updateTableName(JfxApp.App.MY_DATABASE, CourseSelection.getCourseSelectionInstance("").getCourseName(), newName);
+    	
+    		if (courseSelection != null) {
+//    			String courseName = courseSelection.getCourseName();
+    			CourseSelection.getCourseSelectionInstance("").setCourseName(newName);
+    			courseNameTF.setText(newName);
+    			System.out.println("Selection: " + courseSelection.getCourseName());
+    			updateCourseNameTF.setText(newName);
+    		} else {
+    			courseNameTF.setText("");
+    			updateCourseNameTF.setText("");
+    		}
+    	} finally {
+    		updateTable();
+    	}
     }
     
     @FXML
@@ -95,6 +109,9 @@ public class CourseListEditorController implements Initializable{
     	sqliteUtil.DataBaseUtil.dropTable(JfxApp.App.MY_DATABASE, CourseSelection.getCourseSelectionInstance("").getCourseName());
     	CourseSelection.getCourseSelectionInstance("").setNull();
     	updateTable();
+    	courseSelection = null;
+    	courseNameTF.setText("");
+		updateCourseNameTF.setText("");
     }
     
     

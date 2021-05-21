@@ -189,6 +189,7 @@ public class CourseEditorController implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		courseSelection = CourseSelection.getCourseSelectionInstance("");
 		courseTXT.setText(courseSelection.getCourseName());
 		LinkedList<TermInfo> termList = sqliteUtil.DataBaseUtil.getAllTerms(JfxApp.App.MY_DATABASE, CourseSelection.getCourseSelectionInstance("").getCourseName());
 		terms = FXCollections.observableArrayList(termList);//TERM, TEXT_CONTENT, PDF_PATH
