@@ -24,7 +24,7 @@ public class CourseSelectionController implements Initializable{
 	private static ObservableList<CourseInfo> courses = FXCollections.observableArrayList(sqliteUtil.DataBaseUtil.getAllTables(JfxApp.App.MY_DATABASE));
 	
 	@FXML 
-	private Button createCourseBTN;
+	private Button editCourseListBTN;
 	
 	@FXML 
 	private Button courseSelectionBTN;
@@ -55,9 +55,9 @@ public class CourseSelectionController implements Initializable{
     }
     
     @FXML
-	void onCreateCourseBTNClicked(ActionEvent event) {
+	void onEditCourseListBTNClicked(ActionEvent event) {
 	    SceneChangeUtil scu = new SceneChangeUtil();
-	    scu.switchScenes("CreateCourse.fxml", event);
+	    scu.switchScenes("CourseListEditor.fxml", event);
 	}
 	    
 	@FXML
@@ -79,7 +79,7 @@ public class CourseSelectionController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		courseSelection = CourseSelection.getCourseSelectionInstance("");
 		updateTable();
 	}
 	

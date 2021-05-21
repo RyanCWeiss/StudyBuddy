@@ -7,7 +7,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.ResourceBundle;
 
@@ -83,7 +86,7 @@ public class CourseEditorController implements Initializable {
 	    scu.switchScenes("Carousel.fxml", event);
 	}
 	@FXML
-	void onUpdateTermBTNClicked(ActionEvent event) {
+	void onUpdateTermBTNClicked(ActionEvent event) throws MalformedURLException {
 	   System.out.println("Update Term: inc");
 	   
 	   String term = termTF.getText();
@@ -94,6 +97,7 @@ public class CourseEditorController implements Initializable {
 	   
 	   textContentTF.setText("");
 	   termTF.setText("");
+	   
 	   updateTable();
 	}
 	@FXML
@@ -112,6 +116,7 @@ public class CourseEditorController implements Initializable {
 		termTF.setText("");
 		pathChosen = null;
 		updateTable();
+		
 		 
 	}
 	@FXML
@@ -136,8 +141,6 @@ public class CourseEditorController implements Initializable {
 	    Stage stage = (Stage)bp.getScene().getWindow();
 	    File file = chooser.showOpenDialog(stage);
 	    if (file != null) {
-//	        String cwd = System. getProperty("user.dir");
-//	        String path1 = new File(cwd).toURI().relativize(file.toURI()).getPath();
 	        String path1 = file.toString();
 	        System.out.println("FILE CHOOSER INCOMPLETE: NEED TO CLONE THE FILE AND PUT INTO PROPER LOCAL FOLDER");
 	        
@@ -166,7 +169,7 @@ public class CourseEditorController implements Initializable {
 	@FXML
 	void onCreateCourseBTNClicked(ActionEvent event) {
 	    SceneChangeUtil scu = new SceneChangeUtil();
-	    scu.switchScenes("CreateCourse.fxml", event);
+	    scu.switchScenes("CourseListEditor.fxml", event);
 	}
 	    
 	@FXML
@@ -204,7 +207,7 @@ public class CourseEditorController implements Initializable {
 	}
 	
 	@FXML
-	public void onTermTVSelected(MouseEvent event) {
+	public void onTermTVSelected(MouseEvent event) throws MalformedURLException {
 		System.out.println("term selected");
 		
 		TermInfo selection = termTV.getSelectionModel().getSelectedItem();
@@ -221,7 +224,12 @@ public class CourseEditorController implements Initializable {
 		
 		
 		pathChosen = path;
-		attachmentIV.setImage(new Image("/DataBases/Attachments/"+ path));
+		
+		Path imagePath = Paths.get("./src/DataBases/Attachments/"+ path).normalize().toAbsolutePath();
+		Image image = new Image(imagePath.toUri().toURL().toString());
+		attachmentIV.setImage(image);
+		attachmentIV.setVisible(false);
+		attachmentIV.setVisible(true);
     	}
 	}
 	

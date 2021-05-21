@@ -33,7 +33,7 @@ public class CarouselController implements Initializable {
     private Button courseSelectionBTN;
 
     @FXML
-    private Button createCourseBTN;
+    private Button editCourseListBTN;
 
     @FXML
     private Text termTXT;
@@ -77,9 +77,9 @@ public class CarouselController implements Initializable {
     	attachmentIV.setVisible(false);	
     }
     @FXML
-   	void onCreateCourseBTNClicked(ActionEvent event) {
+   	void onEditCourseListBTNClicked(ActionEvent event) {
    	    SceneChangeUtil scu = new SceneChangeUtil();
-   	    scu.switchScenes("CreateCourse.fxml", event);
+   	    scu.switchScenes("CourseListEditor.fxml", event);
    	}
    	    
    	@FXML

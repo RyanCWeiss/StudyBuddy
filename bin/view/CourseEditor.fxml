@@ -66,18 +66,14 @@
                            </font>
                         </Text>
                         <ImageView fx:id="attachmentIV" fitHeight="533.0" fitWidth="408.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowSpan="4" GridPane.valignment="CENTER" />
-                        <HBox alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="233.0" spacing="20.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
-                           <children>
-                              <Button fx:id="updateTermBTN" alignment="CENTER" mnemonicParsing="false" onAction="#onUpdateTermBTNClicked" prefWidth="120.0" text="Update Term" />
-                           </children>
-                        </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="35.0" prefWidth="233.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                            <children>
-                              <Button fx:id="addTermBTN" alignment="CENTER" mnemonicParsing="false" onAction="#onAddTermBTNClicked" prefWidth="120.0" text="Add new Term" />
                               <Button fx:id="deleteTermBTN" alignment="CENTER" mnemonicParsing="false" onAction="#onDeleteTermBTNClicked" prefWidth="120.0" text="Delete Term" />
                            </children>
                         </HBox>
-                        <Button fx:id="removeAttachmentBTN" mnemonicParsing="false" onAction="#onRemoveAttachmentBTNClicked" text="Remove Attachment" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Button fx:id="removeAttachmentBTN" mnemonicParsing="false" onAction="#onRemoveAttachmentBTNClicked" prefWidth="130.0" text="Remove Attachment" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                        <Button fx:id="updateTermBTN" alignment="CENTER" mnemonicParsing="false" onAction="#onUpdateTermBTNClicked" prefWidth="120.0" text="Update Term" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+                        <Button fx:id="addTermBTN" alignment="CENTER" mnemonicParsing="false" onAction="#onAddTermBTNClicked" prefHeight="26.0" prefWidth="130.0" text="Add new Term" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
                </children>
@@ -97,7 +93,7 @@
             <HBox prefHeight="41.0" prefWidth="1120.0" spacing="20.0">
                <children>
                   <Button fx:id="courseSelectionBTN" mnemonicParsing="false" onAction="#onCourseSelectionBTNClicked" text="Course Selection" />
-                  <Button fx:id="createCourseBTN" mnemonicParsing="false" onAction="#onCreateCourseBTNClicked" text="Add a Course" />
+                  <Button fx:id="createCourseBTN" mnemonicParsing="false" onAction="#onCreateCourseBTNClicked" text="Edit Course List" />
                </children>
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

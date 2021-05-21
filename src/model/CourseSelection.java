@@ -29,5 +29,9 @@ public class CourseSelection {
 		this.courseName = courseName;
 	}
 
+	public void setNull() {
+		CourseSelection.courseSelection = null;
+	}
+
 	
 }

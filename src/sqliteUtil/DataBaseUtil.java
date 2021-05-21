@@ -349,4 +349,22 @@ public class DataBaseUtil {
 		}
 		
 	}
+
+	public static boolean updateTableName(String dbName, String tableName, String newName) {
+		Connection connection = null;
+		try {
+			connection = sqliteUtil.ConnectionUtil.getConnection(dbName + ".sqlite");
+			Statement statement = connection.createStatement();	
+			statement.setQueryTimeout(30);	
+			
+			statement.executeUpdate("ALTER TABLE  " + tableName
+					+ " RENAME TO " + newName);	
+		
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqliteUtil.ConnectionUtil.closeConnection(connection);
+		}
+		return !tableExists(dbName, newName);
+	}
 }

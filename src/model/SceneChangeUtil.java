@@ -19,6 +19,10 @@ public class SceneChangeUtil {
 		try {
 			Parent root;
 			root = FXMLLoader.load(getClass().getResource("/view/" + fxml));
+			
+//			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/" + fxml));
+//			root = loader.load();
+
 			Scene mainScene = new Scene(root);
 	        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 	        primaryStage.setScene(mainScene);
